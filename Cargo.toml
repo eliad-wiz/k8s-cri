@@ -5,22 +5,22 @@ license = "Apache-2.0"
 authors = ["kflansburg <kevin.flansburg@gmail.com>"]
 categories = ["api-bindings"]
 description = "Bindings Kubernetes CRI"
-edition = "2018"
+edition = "2021"
 keywords = ["client", "kubernetes", "k8s", "cri"]
 repository = "https://github.com/kflansburg/k8s-cri"
 documentation = "https://docs.rs/crate/k8s-cri"
 readme = "README.md"
 
 [dependencies]
-tonic = { version = "0.9"}
-prost = "0.11"
+tonic = { version = "0.10"}
+prost = "0.12"
 serde = { version = "1.0", features = ["derive"] }
 
 [build-dependencies.tonic-build]
-version = "0.8"
+version = "0.10"
 default-features = false
 features = ["prost", "transport"]
 
 [dev-dependencies]
-tokio = { version = "1.21", features = [ "rt-multi-thread" ] }
+tokio = { version = "1.32", features = [ "rt-multi-thread", "macros" ] }
 tower = "0.4"

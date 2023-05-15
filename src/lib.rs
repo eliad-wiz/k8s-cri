@@ -7,7 +7,6 @@
 //! ```no_run
 //! use k8s_cri::v1alpha2::runtime_service_client::RuntimeServiceClient;
 //! use k8s_cri::v1alpha2::ListContainersRequest;
-//! use tokio::main;
 //!
 //! #[tokio::main]
 //! async fn main() {
@@ -28,7 +27,6 @@
 //!
 //! ```no_run
 //! use std::convert::TryFrom;
-//! use tokio::main;
 //!
 //! use k8s_cri::v1alpha2::runtime_service_client::RuntimeServiceClient;
 //! use tokio::net::UnixStream;
