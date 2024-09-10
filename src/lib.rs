@@ -34,13 +34,16 @@
 //! use tokio::net::UnixStream;
 //! use tonic::transport::{Channel, Endpoint, Uri};
 //! use tower::service_fn;
+//! use hyper_util::rt::TokioIo;
 //!
 //! #[tokio::main]
 //! async fn main() {
-//!     let path = "/run/containerd/containerd.sock";
 //!     let channel = Endpoint::try_from("http://[::]")
 //!         .unwrap()
-//!         .connect_with_connector(service_fn(move |_: Uri| UnixStream::connect(path)))
+//!         .connect_with_connector(service_fn(|_: Uri| async {
+//!             let path = "/run/containerd/containerd.sock";
+//!             Ok::<_, std::io::Error>(TokioIo::new(UnixStream::connect(path).await?))
+//!         }))
 //!         .await
 //!         .expect("Could not create client.");
 //!
